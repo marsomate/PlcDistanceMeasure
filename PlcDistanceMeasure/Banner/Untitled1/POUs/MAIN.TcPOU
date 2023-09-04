@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{2e345abe-4a84-4fd1-843c-826da4a4d9f9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+{attribute 'TcLinkToOSO' := '.In.OutputState 			:= <0,1,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^In^Output State;
+							 .Out.Color1 	 			:= <0,5,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Color 1;
+							 .Out.Color2 	 			:= <0,5,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Color 2;
+							 .Out.Color1Intensity 	 	:= <0,3,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Color 1 Intensity;
+							 .Out.Color2Intensity 	 	:= <0,3,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Color 2 Intensity;
+							 .Out.SequenceStartLocation	:= <0,3,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Sequence Start Location;
+							 .Out.DynamicSequenceValue 	:= <0,8,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Dynamic Sequence Value (0-255);
+							 .Out.AnimationSpeed 	 	:= <0,2,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Animation Speed;
+							 .Out.Reserved 	 			:= <0,2,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Reserved;
+							 .Out.AnimationType 	 	:= <0,4,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Animation Type;
+							 .Out.AnimationDirection 	:= <0,1,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Animation Direction;
+							 .Out.AnimationPattern 	 	:= <0,3,0>TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Banner_K30PTKQ^Out^Animation Pattern'}	
+	LED		: FB_Banner_K30PTKQ; (*This is an instance of the FB_LED Funciton block*)
+	{attribute 'TcLinkTo' := '.In.Stability 			:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^Stability;
+							  .In.TeachIn 				:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^Teach-In;
+							  .In.BDC1 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC1;
+							  .In.BDC2 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC2;
+							  .In.BDC3 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC3;
+							  .In.BDC4 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC4;
+							  .In.BDC5 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC5;
+							  .In.BDC6 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC6;
+							  .In.BDC7 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC7;
+							  .In.BDC8 					:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Balluff_BMF00LA^In^BDC8'}
+	Sensor	: FB_Balluff_BMF00LA; (*This is an instance of the FB_Sensor Funciton block*)
+	
+	{attribute 'TcLinkTo' := '.In.CurrentValue 			:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Current Value;
+							  .In.ErrorOvercurrent 		:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Error : Overcurrent;
+						      .In.ErrorHeadError	 	:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Error : Head Error;
+							  .In.ErrorEepromError 	 	:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Error : EEPROM Error;
+							  .In.Error17Error 			:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Error : Error 1 - 7;
+							  .In.Output1 	 			:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Output 1;
+							  .In.Output2	 	 		:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Output 2;
+							  .In.Warning 	 			:= TIID^Device 2 (EtherCAT)^Box 1 (EP6228-0022)^Keyence_LRXH100^In^Warning'}
+	KeyenceSensor			: FB_Keyence_LRXH100; (*This is an instance of the FB_Keyence Funciton block*)
+END_VAR
+VAR
+	sVendorName				: STRING(64);
+	sVendorText				: STRING(64);
+	bTrig					: BOOL;
+	fbAdsRead				: Tc2_System.ADSREAD;
+	i						: INT;
+	sData					: ARRAY[0..3] OF STRING(64);
+	nIndexOffset			: ARRAY[0..3] OF UDINT := [16#00100000, 16#00110000, 16#00120000, 16#00130000];
+	state					: INT := 0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FB_CALL(); (* This action call all of the Function blocks *)
+(* This function block makes the LED Interacting with the Keyence sensor *)
+LED(
+	nDistance:= KeyenceSensor.nDistance,
+	nLowLimit:= 600,
+	nHighLimit:= 1000);
+			
+(*IF bTrig THEN
+	FOR i:=0 TO 3 BY 1 DO
+		fbAdsRead(
+			NETID	:= '10.62.25.99.3.2', 
+			PORT	:= 16#1007, 
+			IDXGRP	:= 16#F302,
+			IDXOFFS	:= nIndexOffset[i], 
+			LEN		:= SIZEOF(sData[i]), 
+			DESTADDR:= ADR(sData[i]),
+			READ	:= TRUE,
+			TMOUT	:= T#3S);
+	END_FOR
+END_IF*)
+
+(*IF bTrig THEN
+	state 	:= 0;
+	i 		:= 0;
+	FOR i:=0 TO 3 BY 1 DO
+		CASE state OF
+			0:	// Init
+				IF i=4 THEN
+					bTrig := FALSE;
+					RETURN;
+				ELSE
+					fbAdsRead(
+						IDXOFFS	:= nIndexOffset[i], 
+						LEN		:= SIZEOF(sData[i]), 
+						DESTADDR:= ADR(sData[i]), 
+						READ:= FALSE);
+					
+					MEMSET(ADR(sData[i]), 0, SIZEOF(sData[i]));
+					state := state + 1;					
+				END_IF
+
+			1:	// Execute
+					fbAdsRead(READ	:= TRUE);
+					
+					IF fbAdsRead.BUSY THEN
+						state := state + 1;
+					END_IF
+				
+			2:	// Done
+				IF NOT fbAdsRead.BUSY THEN
+					fbAdsRead(READ:= FALSE);
+					state := 0;
+				END_IF		
+		END_CASE
+	END_FOR
+END_IF*)
+
+
+//IF fbAdsRead.BUSY THEN
+//	bTrig := FALSE;
+//END_IF]]></ST>
+    </Implementation>
+    <Action Name="FB_CALL" Id="{090d62b9-6cad-41d8-97a5-5251de05f35c}">
+      <Implementation>
+        <ST><![CDATA[KeyenceSensor();
+Sensor();
+LED();
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="MAIN">
+      <LineId Id="187" Count="0" />
+      <LineId Id="236" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="184" Count="2" />
+      <LineId Id="525" Count="0" />
+      <LineId Id="552" Count="1" />
+      <LineId Id="557" Count="0" />
+      <LineId Id="568" Count="2" />
+      <LineId Id="558" Count="1" />
+      <LineId Id="555" Count="0" />
+      <LineId Id="560" Count="0" />
+      <LineId Id="571" Count="0" />
+      <LineId Id="556" Count="0" />
+      <LineId Id="554" Count="0" />
+      <LineId Id="562" Count="0" />
+      <LineId Id="374" Count="0" />
+      <LineId Id="521" Count="0" />
+      <LineId Id="533" Count="0" />
+      <LineId Id="400" Count="0" />
+      <LineId Id="469" Count="0" />
+      <LineId Id="474" Count="0" />
+      <LineId Id="538" Count="1" />
+      <LineId Id="550" Count="0" />
+      <LineId Id="541" Count="0" />
+      <LineId Id="543" Count="6" />
+      <LineId Id="542" Count="0" />
+      <LineId Id="540" Count="0" />
+      <LineId Id="479" Count="1" />
+      <LineId Id="511" Count="0" />
+      <LineId Id="513" Count="3" />
+      <LineId Id="488" Count="0" />
+      <LineId Id="485" Count="0" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="520" Count="0" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="484" Count="0" />
+      <LineId Id="473" Count="0" />
+      <LineId Id="398" Count="1" />
+      <LineId Id="535" Count="0" />
+      <LineId Id="394" Count="1" />
+      <LineId Id="414" Count="0" />
+      <LineId Id="393" Count="0" />
+    </LineIds>
+    <LineIds Name="MAIN.FB_CALL">
+      <LineId Id="1" Count="1" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="3" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Keyence_LRXH100" Id="{7406af5e-99ff-459d-adc1-30e3b47845da}" SpecialFunc="None">
+    <Declaration><![CDATA[(* This Function block is for the Keyence sensor *)
+FUNCTION_BLOCK FB_Keyence_LRXH100
+VAR_OUTPUT
+	nDistance	: INT;
+END_VAR
+VAR
+	In	AT %I*	: ST_Keyence_LRXH100_Status;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Setting the output value to the current distance *)
+nDistance := In.CurrentValue;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Keyence_LRXH100">
+      <LineId Id="21" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

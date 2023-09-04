@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Balluff_BMF00LA_Status" Id="{3a47ffd7-f45c-4ba4-8cc7-5bebb3820440}">
+    <Declaration><![CDATA[(*
+	This structure contains all the outputs of the BANNER LED.
+	The inputs and the outputs are linked to the device as well.
+*)
+TYPE ST_Balluff_BMF00LA_Status :
+STRUCT
+	Stability	: BOOL; (* Monitor if the sensor recognises a signal *)
+	TeachIn		: BOOL; (* Monitor whether it is currently being taught *)
+	BDC1		: BOOL; (* Setted point 1 *)
+	BDC2		: BOOL; (* Setted point 2 *)
+	BDC3		: BOOL; (* Setted point 3 *)
+	BDC4		: BOOL; (* Setted point 4 *)
+	BDC5		: BOOL; (* Setted point 5 *)
+	BDC6		: BOOL; (* Setted point 6 *)
+	BDC7		: BOOL; (* Setted point 7 *)
+	BDC8		: BOOL; (* Setted point 8 *)
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

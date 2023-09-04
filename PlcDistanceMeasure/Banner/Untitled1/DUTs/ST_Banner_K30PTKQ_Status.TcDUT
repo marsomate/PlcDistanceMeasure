@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Banner_K30PTKQ_Status" Id="{c86f365a-7409-44ba-9973-3350ac137dbd}">
+    <Declaration><![CDATA[(*
+	This structure contains all the outputs of the BANNER LED.
+	The inputs and the outputs are linked to the device as well.
+*)
+TYPE ST_Banner_K30PTKQ_Status :
+	STRUCT
+	OutputState	: UINT; (* 0 = Normally Closed, 1 = Normally Open *)
+	END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

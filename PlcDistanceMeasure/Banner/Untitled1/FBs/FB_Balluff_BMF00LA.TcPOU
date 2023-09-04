@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Balluff_BMF00LA" Id="{ec4aac2a-536b-48d3-8449-df4ef6428802}" SpecialFunc="None">
+    <Declaration><![CDATA[(* This Function block is for the BALLUF sensor *)
+FUNCTION_BLOCK FB_Balluff_BMF00LA
+VAR
+	In		AT %I* 	: ST_Balluff_BMF00LA_Status;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Balluff_BMF00LA">
+      <LineId Id="19" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

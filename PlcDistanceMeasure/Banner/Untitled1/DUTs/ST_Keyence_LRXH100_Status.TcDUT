@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Keyence_LRXH100_Status" Id="{5c7ddfdb-e02e-4116-84bc-5499a1dc5dff}">
+    <Declaration><![CDATA[(*
+	This structure contains all the outputs of the BANNER LED.
+	The inputs and the outputs are linked to the device as well.
+*)
+TYPE ST_Keyence_LRXH100_Status :
+STRUCT
+	CurrentValue		: INT; (* The distance from the target -9999 to 10001 *)
+	ErrorOvercurrent	: BOOL; (* 0x7710 An overcurrent error has occurred. *)
+	ErrorHeadError		: BOOL; (* 0x1803 A laser fault has occurred. *)
+	ErrorEepromError	: BOOL; (* 0x5000 An EEPROM error has occurred in the sensor. *)
+	Error17Error		: BOOL; (* 0x1807 Error 1 - 7 *)
+	Output1				: BOOL; (* Output 1 *)
+	Output2				: BOOL; (* Output 2 *)
+	Warning				: BOOL; (* Warning *)
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

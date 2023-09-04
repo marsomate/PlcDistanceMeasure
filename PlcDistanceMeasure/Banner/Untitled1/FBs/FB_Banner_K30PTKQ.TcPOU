@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Banner_K30PTKQ" Id="{c7d2c995-5068-4702-b224-a6c606f29d91}" SpecialFunc="None">
+    <Declaration><![CDATA[(*This Function block is for the BANNER LED*)
+FUNCTION_BLOCK FB_Banner_K30PTKQ
+VAR_INPUT
+	nDistance	: INT;					(* The sensor actual distance from the targeted item *)
+	nLowLimit	: INT := 200; 			(* The minimum distance of the valid intervall*)
+	nHighLimit	: INT := 1200; 			(* The maximum distance of the valid intervall*)
+END_VAR
+VAR
+	In		AT %I* 	: ST_Banner_K30PTKQ_Status;  (*THIS is an instance of the ST_BannerStatus STRUCTURE.*)
+	Out 	AT %Q* 	: ST_Banner_K30PTKQ_Control;	(*THIS is an instance of the ST_BannerControl STRUCTURE.*)
+	color1 			: UINT := 4;		(*0 = Green, 1 = Red, 2 = Orange, 3 = Amber, 4 = Yellow,
+										5 = Lime Green, 6 = Spring Green, 7 = Cyan, 8 = Sky Blue,
+										9 = Blue, 10 = Violet, 11 = Magenta, 12 = Rose, 13 = White,
+										14 = Custom1, 15 = Custom2*)
+	color2			: UINT := 1;		(*0 = Green, 1 = Red, 2 = Orange, 3 = Amber, 4 = Yellow,
+										5 = Lime Green, 6 = Spring Green, 7 = Cyan, 8 = Sky Blue,
+										9 = Blue, 10 = Violet, 11 = Magenta, 12 = Rose, 13 = White,
+										14 = Custom1, 15 = Custom2*)
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* If the targeted distance is optimal the Banner is Green else it is red.
+If the distance is too big or too small the banner is off *)
+IF nDistance <> 10000 THEN
+	IF nDistance <= nLowLimit OR nDistance >= nHighLimit THEN
+		Out.Color1 := 1;
+		Out.Color2 := 1;
+		Out.Color2Intensity := 2;
+		Out.AnimationType	:= 10;
+		Out.AnimationSpeed := 1;
+	ELSE
+		Out.Color1 := 0;
+		Out.Color2 := 0;
+		Out.Color2Intensity := 2;
+		Out.AnimationType	:= 10;
+		Out.AnimationSpeed := 1;	
+	END_IF
+ELSE
+	Out.Color1 := 1;
+	Out.Color2 := 1;
+	Out.Color2Intensity := 2;
+	Out.AnimationType	:= 0;
+	Out.AnimationSpeed := 1;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Banner_K30PTKQ">
+      <LineId Id="78" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="177" Count="0" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="191" Count="3" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="197" Count="3" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="181" Count="3" />
+      <LineId Id="179" Count="1" />
+      <LineId Id="124" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
